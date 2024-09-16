@@ -23,8 +23,8 @@ Grid::Grid(int rows, int cols)
         }
     }
 
-    xMax = cols;
-    yMax = rows;
+    this->rows = rows;
+    this->cols = cols;
     k = 1.0;
 }
 
@@ -32,20 +32,26 @@ Grid::~Grid()
 {
 
     // Deallocate potentials array
-    for (int i = 0; i < xMax; ++i)
+    for (int i = 0; i < this->rows; ++i)
     {
-        for (int j = 0; j < yMax; ++j)
+        // Deallocate objects
+        delete[] objects[i];
+        for (int j = 0; j < this->cols; ++j)
         {
             delete[] potentials[i][j];
         }
         delete[] potentials[i];
     }
     delete[] potentials;
-
-    // Deallocate objects array
-    for (int i = 0; i < xMax; ++i)
-    {
-        delete[] objects[i];
-    }
     delete[] objects;
+}
+
+bool Grid::isValid(int x, int y)
+{
+    return ((x <= this->cols) && (y <= this->rows));
+}
+
+void Grid::setObject(int x, int y, char obj)
+{
+    this->objects[y][x] = obj;
 }

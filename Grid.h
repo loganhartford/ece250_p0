@@ -7,10 +7,12 @@ public:
     Grid(int rows, int cols);
     ~Grid();
 
-    int xMax;
-    int yMax;
+    void setObject(int x, int y, char obj);
+    bool isValid(int x, int y);
 
 private:
+    int rows;
+    int cols;
     double ***potentials;
     char **objects;
     double k;

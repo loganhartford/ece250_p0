@@ -8,7 +8,7 @@ int main()
 {
     string cmd;
     char type;
-    int x, y;
+    int x, y = 0;
     double k;
     Grid *map = nullptr;
 
@@ -30,11 +30,13 @@ int main()
             cin >> type;
             cin >> x;
             cin >> y;
-            if (type == 'O')
+            if (map->isValid(x, y))
             {
+                map->setObject(x, y, type);
             }
             else
             {
+                cout << "failure" << endl;
             }
 
             cout << "success" << endl;
