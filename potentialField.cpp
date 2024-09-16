@@ -2,17 +2,27 @@
 #include <string>
 using namespace std;
 
+#include "Grid.h"
+
 int main()
 {
     string cmd;
     char type;
-    int x;
-    int y;
+    int x, y;
     double k;
+    Grid *map = nullptr;
+
     while (cin >> cmd)
     {
         if (cmd == "CREATE")
         {
+            cin >> x;
+            cin >> y;
+            if (map)
+            {
+                delete map;
+            }
+            map = new Grid(x, y);
             cout << "success" << endl;
         }
         else if (cmd == "POINT")
@@ -51,10 +61,19 @@ int main()
         }
         else if (cmd == "EXIT")
         {
-            // Dellocate memory
+            if (map)
+            {
+                delete map;
+                map = nullptr;
+            }
             return 0;
         }
     }
 
+    if (map)
+    {
+        delete map;
+        map = nullptr;
+    }
     return 0;
 }
