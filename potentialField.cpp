@@ -33,13 +33,12 @@ int main()
             if (map && map->isValid(x, y))
             {
                 map->setObject(x, y, type);
+                cout << "success" << endl;
             }
             else
             {
                 cout << "failure" << endl;
             }
-
-            cout << "success" << endl;
         }
         else if (cmd == "MOVE")
         {

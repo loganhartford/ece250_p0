@@ -6,3 +6,5 @@ Test Cases
 * I think the way we are validating x an y is wring
     make(4, 4)
     point O 4 4
+
+* Need to test all the failure conditions
