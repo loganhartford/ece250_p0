@@ -61,6 +61,21 @@ double Grid::move(int x, int y)
     return this->potentials[y][x];
 }
 
+void Grid::updateK(double k)
+{
+    this->k = k;
+    // Clear  potentials
+    for (int y = 0; y < this->rows; y++)
+    {
+        for (int x = 0; x < this->cols; x++)
+        {
+            potentials[y][x] = 0.0;
+        }
+    }
+
+    calcAllPotentials();
+}
+
 void Grid::setObject(int x, int y, char obj)
 {
     this->objects[y][x] = obj;
@@ -73,7 +88,15 @@ void Grid::calcObjPotential(int xO, int yO, char obj)
     {
         for (int x = 0; x < cols; x++)
         {
-            double pot = k / sqrt(pow(x - xO, 2) + pow(y - yO, 2));
+            double pot;
+            if ((x == xO) && (y == yO))
+            {
+                pot = 0;
+            }
+            else
+            {
+                pot = k / sqrt(pow(x - xO, 2) + pow(y - yO, 2));
+            }
 
             if (obj == 'G')
             {
@@ -90,8 +113,9 @@ void Grid::calcAllPotentials(void)
     {
         for (int x = 0; x < cols; x++)
         {
-            if (objects[y][x])
+            if (objects[y][x] != ' ')
             {
+                cout << "hello" << endl;
                 calcObjPotential(x, y, objects[y][x]);
             }
         }

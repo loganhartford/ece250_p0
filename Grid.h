@@ -3,6 +3,10 @@
 
 #include <cmath>
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Grid
 {
 public:
@@ -13,6 +17,7 @@ public:
     void setObject(int x, int y, char obj);
     bool isValid(int x, int y);
     double move(int x, int y);
+    void updateK(double k);
 
 private:
     int rows;

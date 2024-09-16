@@ -70,8 +70,9 @@ int main()
         else if (cmd == "UPDATE")
         {
             cin >> k;
-            if (k > 0)
+            if (k > 0 && map)
             {
+                map->updateK(k);
                 cout << "success" << endl;
             }
             else
