@@ -1,10 +1,2 @@
-Test Cases
-
-1. What happends when you try and do an operation and the grid has not been created?
-2. What happends when you try and move if the grid hasn't been created?
-
-* I think the way we are validating x an y is wring
-    make(4, 4)
-    point O 4 4
-
+TODO:
 * Need to test all the failure conditions
