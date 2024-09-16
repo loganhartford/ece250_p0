@@ -115,7 +115,6 @@ void Grid::calcAllPotentials(void)
         {
             if (objects[y][x] != ' ')
             {
-                cout << "hello" << endl;
                 calcObjPotential(x, y, objects[y][x]);
             }
         }
