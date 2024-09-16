@@ -1,0 +1,3 @@
+Test Cases
+
+1. What happends when you try and do an operation and the grid has not been created?
