@@ -9,7 +9,7 @@ int main()
     string cmd;
     char type;
     int x, y = 0;
-    double k;
+    double k, potential;
     Grid *map = nullptr;
 
     while (cin >> cmd)
@@ -30,7 +30,7 @@ int main()
             cin >> type;
             cin >> x;
             cin >> y;
-            if (map->isValid(x, y))
+            if (map && map->isValid(x, y))
             {
                 map->setObject(x, y, type);
             }
@@ -45,9 +45,27 @@ int main()
         {
             cin >> x;
             cin >> y;
+            if (map && map->isValid(x, y))
+            {
+                potential = map->move(x, y);
+                cout << potential << " " << potential << endl;
+            }
+            else
+            {
+                cout << "failure" << endl;
+            }
         }
         else if (cmd == "CLEAR")
         {
+            if (map)
+            {
+                map->clear();
+                cout << "success" << endl;
+            }
+            else
+            {
+                cout << "failure" << endl;
+            }
         }
         else if (cmd == "UPDATE")
         {
