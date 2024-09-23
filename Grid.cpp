@@ -85,9 +85,9 @@ void Grid::setObject(int x, int y, char obj)
     // Different object present
     else
     {
-        clearPotentials();
         this->objects[y][x] = obj;
-        calcAllPotentials();
+        calcObjPotential(x, y, obj);
+        calcObjPotential(x, y, obj);
     }
 }
 
