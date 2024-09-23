@@ -53,7 +53,7 @@ void Grid::clear(void)
 
 bool Grid::isValid(int x, int y)
 {
-    return ((x < cols) && (y < rows));
+    return (x >= 0 && x < cols && y >= 0 && y < rows);
 }
 
 double Grid::move(int x, int y)

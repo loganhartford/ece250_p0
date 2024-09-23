@@ -1,0 +1,7 @@
+CREATE 2 2
+MOVE -1 0        # Test invalid negative index.
+MOVE 0 3         # Test out-of-bounds positive index.
+MOVE 3 3         # Test another out-of-bounds case.
+POINT G -1 0     # Try to place an object at an invalid negative index.
+POINT O 0 3      # Try to place an obstacle out-of-bounds.
+EXIT
