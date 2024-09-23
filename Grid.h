@@ -26,6 +26,7 @@ private:
     char **objects;
     double k;
 
+    void clearPotentials(void);
     void calcObjPotential(int xO, int yO, char obj);
     void calcAllPotentials();
 };

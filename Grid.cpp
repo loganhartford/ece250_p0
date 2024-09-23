@@ -64,6 +64,35 @@ double Grid::move(int x, int y)
 void Grid::updateK(double k)
 {
     this->k = k;
+
+    clearPotentials();
+    calcAllPotentials();
+}
+
+void Grid::setObject(int x, int y, char obj)
+{
+    // Object is already present, do nothing
+    if (this->objects[y][x] == obj)
+    {
+        return;
+    }
+    // No object preset, update and calculate potential impact
+    else if (this->objects[y][x] == ' ')
+    {
+        this->objects[y][x] = obj;
+        calcObjPotential(x, y, obj);
+    }
+    // Different object present
+    else
+    {
+        clearPotentials();
+        this->objects[y][x] = obj;
+        calcAllPotentials();
+    }
+}
+
+void Grid::clearPotentials(void)
+{
     // Clear  potentials
     for (int y = 0; y < this->rows; y++)
     {
@@ -72,14 +101,6 @@ void Grid::updateK(double k)
             potentials[y][x] = 0.0;
         }
     }
-
-    calcAllPotentials();
-}
-
-void Grid::setObject(int x, int y, char obj)
-{
-    this->objects[y][x] = obj;
-    calcObjPotential(x, y, obj);
 }
 
 void Grid::calcObjPotential(int xO, int yO, char obj)
